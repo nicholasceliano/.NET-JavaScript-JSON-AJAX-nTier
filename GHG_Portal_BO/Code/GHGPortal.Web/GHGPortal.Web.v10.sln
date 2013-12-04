@@ -1,0 +1,92 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHGPortal.Web", "GHGPortal.Web.csproj", "{E4979915-A678-493C-991F-964ED608A40E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHGPortal.Business", "..\GHGPortal.Business\GHGPortal.Business.csproj", "{293AA953-C566-46A5-A92E-9A0CDD6C3DE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHGPortal.Data", "..\GHGPortal.Data\GHGPortal.Data.csproj", "{749063EA-3312-4B6C-949F-2E3A9AA22F3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHGPortal.Configuration", "..\GHGPortal.Configuration\GHGPortal.Configuration.csproj", "{2B1E5150-3318-4A46-84E8-BDE204DB1281}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHGPortal.Services", "..\GHGPortal.Services\GHGPortal.Services.csproj", "{F8B4FCCC-4FF6-4564-93BA-596E93C246DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHGPortal.UnitTests", "GHGPortal.UnitTests\GHGPortal.UnitTests.csproj", "{E56981F3-AB72-45F0-9CCD-1BE1F0326255}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{92E6647B-FC26-43F0-8EF6-27C49E931A68}"
+	ProjectSection(SolutionItems) = preProject
+		GHGPortal.Web.v10.vsmdi = GHGPortal.Web.v10.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHGPortal.Email", "..\GHGPortal.Email\GHGPortal.Email.csproj", "{86AC5EB6-6CE6-4A4B-841D-2A2FADDE4CB3}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs2010.ihess.com:8080/tfs/corporate
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = GHGPortal.Web.csproj
+		SccLocalPath1 = .
+		SccProjectUniqueName2 = ..\\GHGPortal.Business\\GHGPortal.Business.csproj
+		SccProjectName2 = ../GHGPortal.Business
+		SccLocalPath2 = ..\\GHGPortal.Business
+		SccProjectUniqueName3 = ..\\GHGPortal.Data\\GHGPortal.Data.csproj
+		SccProjectName3 = ../GHGPortal.Data
+		SccLocalPath3 = ..\\GHGPortal.Data
+		SccProjectUniqueName4 = ..\\GHGPortal.Configuration\\GHGPortal.Configuration.csproj
+		SccProjectName4 = ../GHGPortal.Configuration
+		SccLocalPath4 = ..\\GHGPortal.Configuration
+		SccProjectUniqueName5 = ..\\GHGPortal.Services\\GHGPortal.Services.csproj
+		SccProjectName5 = ../GHGPortal.Services
+		SccLocalPath5 = ..\\GHGPortal.Services
+		SccProjectUniqueName6 = GHGPortal.UnitTests\\GHGPortal.UnitTests.csproj
+		SccProjectName6 = GHGPortal.UnitTests
+		SccLocalPath6 = GHGPortal.UnitTests
+		SccProjectUniqueName7 = ..\\GHGPortal.Email\\GHGPortal.Email.csproj
+		SccProjectName7 = ../GHGPortal.Email
+		SccLocalPath7 = ..\\GHGPortal.Email
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = GHGPortal.Web.v10.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E4979915-A678-493C-991F-964ED608A40E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4979915-A678-493C-991F-964ED608A40E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4979915-A678-493C-991F-964ED608A40E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4979915-A678-493C-991F-964ED608A40E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{293AA953-C566-46A5-A92E-9A0CDD6C3DE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{293AA953-C566-46A5-A92E-9A0CDD6C3DE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{293AA953-C566-46A5-A92E-9A0CDD6C3DE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{293AA953-C566-46A5-A92E-9A0CDD6C3DE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{749063EA-3312-4B6C-949F-2E3A9AA22F3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{749063EA-3312-4B6C-949F-2E3A9AA22F3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{749063EA-3312-4B6C-949F-2E3A9AA22F3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{749063EA-3312-4B6C-949F-2E3A9AA22F3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B1E5150-3318-4A46-84E8-BDE204DB1281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B1E5150-3318-4A46-84E8-BDE204DB1281}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B1E5150-3318-4A46-84E8-BDE204DB1281}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B1E5150-3318-4A46-84E8-BDE204DB1281}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8B4FCCC-4FF6-4564-93BA-596E93C246DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8B4FCCC-4FF6-4564-93BA-596E93C246DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8B4FCCC-4FF6-4564-93BA-596E93C246DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8B4FCCC-4FF6-4564-93BA-596E93C246DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E56981F3-AB72-45F0-9CCD-1BE1F0326255}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E56981F3-AB72-45F0-9CCD-1BE1F0326255}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E56981F3-AB72-45F0-9CCD-1BE1F0326255}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E56981F3-AB72-45F0-9CCD-1BE1F0326255}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86AC5EB6-6CE6-4A4B-841D-2A2FADDE4CB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86AC5EB6-6CE6-4A4B-841D-2A2FADDE4CB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86AC5EB6-6CE6-4A4B-841D-2A2FADDE4CB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86AC5EB6-6CE6-4A4B-841D-2A2FADDE4CB3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

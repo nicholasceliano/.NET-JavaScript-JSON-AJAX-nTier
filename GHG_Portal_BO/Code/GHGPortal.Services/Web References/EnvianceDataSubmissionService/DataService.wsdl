@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://enviance.com/2010/DataService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s2="http://enviance.com/Security" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://enviance.com/2010/DataService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Provides methods for entering and querying compliance data.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://enviance.com/2010/DataService">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:import namespace="http://enviance.com/Security" />
+      <s:element name="SubmitNumericDataBatch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="batch" type="tns:ArrayOfDataPoint" />
+            <s:element minOccurs="1" maxOccurs="1" name="partialProcess" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoResubmit" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDataPoint">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DataPoint" nillable="true" type="tns:DataPoint" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DataPoint">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="QualityData" type="tns:ArrayOfQualityData" />
+          <s:element minOccurs="0" maxOccurs="1" name="RequirementId" type="tns:EnvianceID" />
+          <s:element minOccurs="0" maxOccurs="1" name="Collector" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Complete" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfQualityData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="QualityData" nillable="true" type="tns:QualityData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="QualityData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ValueItem" type="tns:ValueItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="UdfId" type="tns:EnvianceID" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ValueItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ValueItemLink" type="tns:ValueItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EnvianceID" abstract="true" />
+      <s:complexType name="PathId">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EnvianceID">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Path" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TagID">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EnvianceID">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Tag" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="NameId">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EnvianceID">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GuidID">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EnvianceID">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="ID" type="s1:guid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="SubmitNumericDataBatchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SubmitNumericDataBatchResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SessionHeader" type="s2:SessionHeader" />
+      <s:element name="SubmitNonNumericDataBatch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="batch" type="tns:ArrayOfNonNumericDataPoint" />
+            <s:element minOccurs="1" maxOccurs="1" name="partialProcess" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoResubmit" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfNonNumericDataPoint">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NonNumericDataPoint" nillable="true" type="tns:NonNumericDataPoint" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NonNumericDataPoint">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RequirementId" type="tns:EnvianceID" />
+          <s:element minOccurs="0" maxOccurs="1" name="Collector" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Comply" type="tns:ComplyState" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comments" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompleteDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ComplianceBegin" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ComplianceEnd" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ComplyState">
+        <s:restriction base="s:string">
+          <s:enumeration value="YesWithComments" />
+          <s:enumeration value="Yes" />
+          <s:enumeration value="NotDetermined" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SubmitNonNumericDataBatchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SubmitNonNumericDataBatchResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBatchStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="batchID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBatchStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBatchStatusResult" type="tns:BatchStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BatchStatus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="StatusCode" type="tns:CommandStatusCode" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProcessMode" type="tns:CommandProcessMode" />
+          <s:element minOccurs="1" maxOccurs="1" name="IssuedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartedProcessingDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FinishedProcessingDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCount" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="CommandStatusCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Waiting" />
+          <s:enumeration value="Processing" />
+          <s:enumeration value="Succeeded" />
+          <s:enumeration value="Failed" />
+          <s:enumeration value="Resubmitted" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="CommandProcessMode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Full" />
+          <s:enumeration value="Partial" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetBatchStatusesByDateRange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="beginDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBatchStatusesByDateRangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBatchStatusesByDateRangeResult" type="tns:ArrayOfBatchStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBatchStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BatchStatus" nillable="true" type="tns:BatchStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetInvalidBatchData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="batchID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInvalidBatchDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInvalidBatchDataResult" type="tns:ArrayOfInvalidBatchData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInvalidBatchData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InvalidBatchData" nillable="true" type="tns:InvalidBatchData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InvalidBatchData">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="BatchID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataType" type="tns:CommandDataType" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataDetails" type="tns:DataValues" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="CommandDataType">
+        <s:restriction base="s:string">
+          <s:enumeration value="NumericDataPoint" />
+          <s:enumeration value="NonNumericDataPoint" />
+          <s:enumeration value="WorkflowInstance" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="DataValues" abstract="true" />
+      <s:complexType name="NumericDataPointValues">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataValues">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Tag" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CompleteDate" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:double" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="DeleteNumericData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="batch" type="tns:ArrayOfRequirementsRange" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRequirementsRange">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RequirementsRange" nillable="true" type="tns:RequirementsRange" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RequirementsRange">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RequirementId" type="tns:EnvianceID" />
+          <s:element minOccurs="1" maxOccurs="1" name="BeginDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndDate" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteNumericDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteNumericDataResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://enviance.com/Security">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:complexType name="SessionHeader">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SessionID" type="s1:guid" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SubmitNumericDataBatchSoapIn">
+    <wsdl:part name="parameters" element="tns:SubmitNumericDataBatch" />
+  </wsdl:message>
+  <wsdl:message name="SubmitNumericDataBatchSoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitNumericDataBatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="SubmitNumericDataBatchSessionHeader">
+    <wsdl:part name="SessionHeader" element="tns:SessionHeader" />
+  </wsdl:message>
+  <wsdl:message name="SubmitNonNumericDataBatchSoapIn">
+    <wsdl:part name="parameters" element="tns:SubmitNonNumericDataBatch" />
+  </wsdl:message>
+  <wsdl:message name="SubmitNonNumericDataBatchSoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitNonNumericDataBatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="SubmitNonNumericDataBatchSessionHeader">
+    <wsdl:part name="SessionHeader" element="tns:SessionHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetBatchStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBatchStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetBatchStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBatchStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBatchStatusSessionHeader">
+    <wsdl:part name="SessionHeader" element="tns:SessionHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetBatchStatusesByDateRangeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBatchStatusesByDateRange" />
+  </wsdl:message>
+  <wsdl:message name="GetBatchStatusesByDateRangeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBatchStatusesByDateRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBatchStatusesByDateRangeSessionHeader">
+    <wsdl:part name="SessionHeader" element="tns:SessionHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetInvalidBatchDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInvalidBatchData" />
+  </wsdl:message>
+  <wsdl:message name="GetInvalidBatchDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInvalidBatchDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInvalidBatchDataSessionHeader">
+    <wsdl:part name="SessionHeader" element="tns:SessionHeader" />
+  </wsdl:message>
+  <wsdl:message name="DeleteNumericDataSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteNumericData" />
+  </wsdl:message>
+  <wsdl:message name="DeleteNumericDataSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteNumericDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteNumericDataSessionHeader">
+    <wsdl:part name="SessionHeader" element="tns:SessionHeader" />
+  </wsdl:message>
+  <wsdl:portType name="DataServiceSoap">
+    <wsdl:operation name="SubmitNumericDataBatch">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Allows for numeric compliance data to be entered into the system.</wsdl:documentation>
+      <wsdl:input message="tns:SubmitNumericDataBatchSoapIn" />
+      <wsdl:output message="tns:SubmitNumericDataBatchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitNonNumericDataBatch">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Allows for non-numeric compliance data to be entered into the system.</wsdl:documentation>
+      <wsdl:input message="tns:SubmitNonNumericDataBatchSoapIn" />
+      <wsdl:output message="tns:SubmitNonNumericDataBatchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the status of a data batch entered into the Enviance system.</wsdl:documentation>
+      <wsdl:input message="tns:GetBatchStatusSoapIn" />
+      <wsdl:output message="tns:GetBatchStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchStatusesByDateRange">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the status of all batches within a given time period.</wsdl:documentation>
+      <wsdl:input message="tns:GetBatchStatusesByDateRangeSoapIn" />
+      <wsdl:output message="tns:GetBatchStatusesByDateRangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvalidBatchData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the invalid unprocessed data for the partially processed batch.</wsdl:documentation>
+      <wsdl:input message="tns:GetInvalidBatchDataSoapIn" />
+      <wsdl:output message="tns:GetInvalidBatchDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNumericData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Deletes data points that fall within the date range specified for one or more Requirements, identified by Tag.</wsdl:documentation>
+      <wsdl:input message="tns:DeleteNumericDataSoapIn" />
+      <wsdl:output message="tns:DeleteNumericDataSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DataServiceSoap" type="tns:DataServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SubmitNumericDataBatch">
+      <soap:operation soapAction="http://enviance.com/2010/DataService/SubmitNumericDataBatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SubmitNumericDataBatchSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitNonNumericDataBatch">
+      <soap:operation soapAction="http://enviance.com/2010/DataService/SubmitNonNumericDataBatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SubmitNonNumericDataBatchSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchStatus">
+      <soap:operation soapAction="http://enviance.com/2010/DataService/GetBatchStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetBatchStatusSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchStatusesByDateRange">
+      <soap:operation soapAction="http://enviance.com/2010/DataService/GetBatchStatusesByDateRange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetBatchStatusesByDateRangeSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvalidBatchData">
+      <soap:operation soapAction="http://enviance.com/2010/DataService/GetInvalidBatchData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetInvalidBatchDataSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNumericData">
+      <soap:operation soapAction="http://enviance.com/2010/DataService/DeleteNumericData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DeleteNumericDataSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DataServiceSoap12" type="tns:DataServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SubmitNumericDataBatch">
+      <soap12:operation soapAction="http://enviance.com/2010/DataService/SubmitNumericDataBatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SubmitNumericDataBatchSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitNonNumericDataBatch">
+      <soap12:operation soapAction="http://enviance.com/2010/DataService/SubmitNonNumericDataBatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SubmitNonNumericDataBatchSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchStatus">
+      <soap12:operation soapAction="http://enviance.com/2010/DataService/GetBatchStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetBatchStatusSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchStatusesByDateRange">
+      <soap12:operation soapAction="http://enviance.com/2010/DataService/GetBatchStatusesByDateRange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetBatchStatusesByDateRangeSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvalidBatchData">
+      <soap12:operation soapAction="http://enviance.com/2010/DataService/GetInvalidBatchData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetInvalidBatchDataSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNumericData">
+      <soap12:operation soapAction="http://enviance.com/2010/DataService/DeleteNumericData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DeleteNumericDataSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DataService">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Provides methods for entering and querying compliance data.</wsdl:documentation>
+    <wsdl:port name="DataServiceSoap" binding="tns:DataServiceSoap">
+      <soap:address location="http://webservices.enviance.com/2010/DataService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DataServiceSoap12" binding="tns:DataServiceSoap12">
+      <soap12:address location="http://webservices.enviance.com/2010/DataService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

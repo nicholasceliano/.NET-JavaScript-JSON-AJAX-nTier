@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GHGPortal.Web.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="GHGPortal_Web_com_ihess_DocManager_DocManagerWebServices" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://stg-stt2.ihess.com/bladestrack/DocManagerWebServices.asmx</Value>
+    </Setting>
+    <Setting Name="GHGPortal_Web_BulkOrderMove_CommonWebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://stt/pdm/webservices/commonwebservice.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

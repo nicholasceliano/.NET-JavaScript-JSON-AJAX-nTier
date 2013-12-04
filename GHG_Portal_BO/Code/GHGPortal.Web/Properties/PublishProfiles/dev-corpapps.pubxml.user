@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <File Include="AccessDenied.htm">
+      <publishTime>10/14/2013 10:40:46</publishTime>
+    </File>
+    <File Include="App_Data/appConfiguration.config">
+      <publishTime>11/04/2013 14:59:22</publishTime>
+    </File>
+    <File Include="App_Data/appsettings.config">
+      <publishTime>11/25/2013 11:39:37</publishTime>
+    </File>
+    <File Include="App_Data/dataConfiguration.config">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="App_Data/systemConfiguration.config">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="App_Themes/Hess/Images/favicon.ico">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="App_Themes/Hess/Images/GHGImages.png">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="App_Themes/Hess/Images/hess-icon.png">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="App_Themes/Hess/Images/indicator.gif">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="App_Themes/Hess/Images/minus.gif">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="App_Themes/Hess/Images/plus.gif">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="App_Themes/Hess/Images/snap.close.gif">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="App_Themes/Hess/Images/snap.open.gif">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="App_Themes/Hess/Images/sortdown.gif">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="App_Themes/Hess/Images/sortup.gif">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="App_Themes/Hess/Images/ui-icons_1F522C_256x240.png">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="App_Themes/Hess/Images/ui-icons_cd0a0a_256x240.png">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="App_Themes/Hess/Images/ui-icons_ffffff_256x240.png">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="App_Themes/Hess/JavaScripts/jquery-1.8.3.min.js">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="App_Themes/Hess/JavaScripts/jquery-ui-1.9.2.custom.min.js">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="App_Themes/Hess/JavaScripts/jquery.autocomplete.js">
+      <publishTime>10/17/2013 15:34:52</publishTime>
+    </File>
+    <File Include="App_Themes/Hess/JavaScripts/jquery.tipsy.js">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="App_Themes/Hess/JavaScripts/json2.js">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="App_Themes/Hess/JavaScripts/MainMenu%28superfish%29.js">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="App_Themes/Hess/JavaScripts/Page_Custom.js">
+      <publishTime>12/02/2013 13:43:25</publishTime>
+    </File>
+    <File Include="App_Themes/Hess/Styles/Default.css">
+      <publishTime>11/20/2013 14:36:24</publishTime>
+    </File>
+    <File Include="App_Themes/Hess/Styles/jquery.autocomplete.css">
+      <publishTime>10/17/2013 15:35:32</publishTime>
+    </File>
+    <File Include="bin/AjaxControlToolkit.dll">
+      <publishTime>10/14/2013 10:40:44</publishTime>
+    </File>
+    <File Include="bin/appConfiguration.config">
+      <publishTime>11/04/2013 15:16:28</publishTime>
+    </File>
+    <File Include="bin/appsettings.config">
+      <publishTime>11/18/2013 15:00:37</publishTime>
+    </File>
+    <File Include="bin/App_Code/Core/CommonControl.cs">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="bin/App_Code/Core/CommonGridViewControl.cs">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="bin/App_Code/EmployeeInfo.cs">
+      <publishTime>11/20/2013 10:41:05</publishTime>
+    </File>
+    <File Include="bin/App_Code/VerificationPortalControls.cs">
+      <publishTime>12/02/2013 10:47:15</publishTime>
+    </File>
+    <File Include="bin/Csla.dll">
+      <publishTime>10/14/2013 10:40:44</publishTime>
+    </File>
+    <File Include="bin/dataConfiguration.config">
+      <publishTime>10/14/2013 10:40:45</publishTime>
+    </File>
+    <File Include="bin/DotLiquid.dll">
+      <publishTime>10/14/2013 10:40:44</publishTime>
+    </File>
+    <File Include="bin/GHGPortal.Business.dll">
+      <publishTime>12/03/2013 16:10:07</publishTime>
+    </File>
+    <File Include="bin/GHGPortal.Configuration.dll">
+      <publishTime>11/04/2013 15:06:35</publishTime>
+    </File>
+    <File Include="bin/GHGPortal.Data.dll">
+      <publishTime>11/21/2013 09:27:12</publishTime>
+    </File>
+    <File Include="bin/GHGPortal.Email.dll">
+      <publishTime>10/16/2013 15:30:55</publishTime>
+    </File>
+    <File Include="bin/GHGPortal.Services.dll">
+      <publishTime>12/03/2013 16:10:09</publishTime>
+    </File>
+    <File Include="bin/GHGPortal.Services.XmlSerializers.dll">
+      <publishTime>12/03/2013 16:10:14</publishTime>
+    </File>
+    <File Include="bin/GHGPortal.Web.dll">
+      <publishTime>12/03/2013 16:10:17</publishTime>
+    </File>
+    <File Include="bin/GHGPortal.Web.XmlSerializers.dll">
+      <publishTime>12/03/2013 16:10:17</publishTime>
+    </File>
+    <File Include="bin/Hess.ActiveDirectory.dll">
+      <publishTime>10/14/2013 10:40:44</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.EnterpriseLibrary.Common.dll">
+      <publishTime>10/14/2013 10:40:44</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.EnterpriseLibrary.Data.dll">
+      <publishTime>10/14/2013 10:40:44</publishTime>
+    </File>
+    <File Include="bin/systemConfiguration.config">
+      <publishTime>10/14/2013 10:40:45</publishTime>
+    </File>
+    <File Include="Controls/ApproveNewAssetsView.ascx">
+      <publishTime>12/03/2013 15:05:13</publishTime>
+    </File>
+    <File Include="Controls/ApproveNewFacilitiesView.ascx">
+      <publishTime>12/03/2013 14:44:02</publishTime>
+    </File>
+    <File Include="Controls/ExecuteSSISView.ascx">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="Controls/FacilityManagementView.ascx">
+      <publishTime>11/21/2013 09:23:26</publishTime>
+    </File>
+    <File Include="Controls/StandardMasterView.ascx">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="Controls/VesselMasterView.ascx">
+      <publishTime>12/02/2013 13:46:02</publishTime>
+    </File>
+    <File Include="Controls/ViewAllMasterView.ascx">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="default.aspx">
+      <publishTime>10/14/2013 10:40:46</publishTime>
+    </File>
+    <File Include="Documents/Validation Portal User Training Manual.docx">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="EmailTemplate/KickoutEmailTemplate.html">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="EmailTemplate/MonthlyValidationReminder.html">
+      <publishTime>11/04/2013 16:20:19</publishTime>
+    </File>
+    <File Include="GHGadmAppNewAssets.aspx">
+      <publishTime>12/03/2013 14:22:23</publishTime>
+    </File>
+    <File Include="GHGadmAppNewFacilities.aspx">
+      <publishTime>12/03/2013 13:44:25</publishTime>
+    </File>
+    <File Include="GHGadmAssetManagement.aspx">
+      <publishTime>10/21/2013 13:55:31</publishTime>
+    </File>
+    <File Include="GHGadmExecuteSSIS.aspx">
+      <publishTime>10/14/2013 10:40:46</publishTime>
+    </File>
+    <File Include="GHGadmFacilityManagement.aspx">
+      <publishTime>12/02/2013 13:21:49</publishTime>
+    </File>
+    <File Include="GHGPortal.Master">
+      <publishTime>12/03/2013 10:52:39</publishTime>
+    </File>
+    <File Include="GHGvGridStd.aspx">
+      <publishTime>10/14/2013 10:40:46</publishTime>
+    </File>
+    <File Include="GHGvGridVessel.aspx">
+      <publishTime>10/16/2013 15:30:20</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>10/14/2013 10:40:46</publishTime>
+    </File>
+    <File Include="Web References/BulkOrderMove/BulkOrderDeleteStatus.datasource">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="Web References/BulkOrderMove/commonwebservice.disco">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="Web References/BulkOrderMove/commonwebservice.wsdl">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="Web References/BulkOrderMove/Reference.map">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="Web References/BulkOrderMove/SAPBulkOrder.datasource">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>12/03/2013 16:10:21</publishTime>
+    </File>
+    <File Include="WebServices/DetailRowServices.asmx">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="WebServices/DocManagerServices.asmx">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="WebServices/EnvianceServices.asmx">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="WebServices/GHGUtilServices.asmx">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+    <File Include="WebServices/SearchBarServices.asmx">
+      <publishTime>10/14/2013 10:40:47</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

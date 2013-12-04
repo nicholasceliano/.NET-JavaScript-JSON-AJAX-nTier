@@ -1,0 +1,5 @@
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Email\bin\Release\GHGPortal.Email.dll
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Email\bin\Release\GHGPortal.Email.pdb
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Email\obj\Release\GHGPortal.Email.csprojResolveAssemblyReference.cache
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Email\obj\Release\GHGPortal.Email.dll
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Email\obj\Release\GHGPortal.Email.pdb

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://stg-stt2.ihess.com/bladestrack/DocManagerWebServices.asmx?wsdl" docRef="http://stg-stt2.ihess.com/bladestrack/DocManagerWebServices.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://stg-stt2.ihess.com/bladestrack/DocManagerWebServices.asmx" xmlns:q1="http://tempuri.org//DocManagerWebServices" binding="q1:DocManagerWebServicesSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://stg-stt2.ihess.com/bladestrack/DocManagerWebServices.asmx" xmlns:q2="http://tempuri.org//DocManagerWebServices" binding="q2:DocManagerWebServicesSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://enviance.com/2007/TreeService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s1="http://enviance.com/Security" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s2="http://microsoft.com/wsdl/types/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://enviance.com/2007/TreeService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Provides methods for manipulating compliance tree objects.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://enviance.com/2007/TreeService">
+      <s:import namespace="http://enviance.com/Security" />
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="GetTree">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tagName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="depth" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTreeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTreeResult" type="tns:ComplianceObjectInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ComplianceObjectInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Tag" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParentTag" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomFields" type="tns:ArrayOfCustomFieldInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="Children" type="tns:ArrayOfComplianceObjectInfo" />
+          <s:element minOccurs="1" maxOccurs="1" name="Leaf" type="s:boolean" />
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActivateDate" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DeactivateDate" nillable="true" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:complexType name="ArrayOfCustomFieldInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CustomFieldInfo" nillable="true" type="tns:CustomFieldInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CustomFieldInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="tns:UdfType" />
+          <s:element minOccurs="1" maxOccurs="1" name="BeginDate" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndDate" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="UdfType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Undefined" />
+          <s:enumeration value="Text" />
+          <s:enumeration value="Float" />
+          <s:enumeration value="Datetime" />
+          <s:enumeration value="Boolean" />
+          <s:enumeration value="Formula" />
+          <s:enumeration value="Hyperlink" />
+          <s:enumeration value="CitationHyperlink" />
+          <s:enumeration value="UniqueTag" />
+          <s:enumeration value="Label" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="CustomFieldLinkedValue">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CustomFieldInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Value" type="tns:RootOption" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RootOption">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Option" type="tns:LinkedOption" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LinkedOption">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Option">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Option" type="tns:LinkedOption" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Option">
+        <s:attribute name="Value" type="s:string" />
+      </s:complexType>
+      <s:complexType name="CustomFieldHyperLinkValue">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CustomFieldInfo">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Value" type="tns:HyperLink" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="HyperLink">
+        <s:attribute name="Label" type="s:string" />
+        <s:attribute name="URL" type="s:string" />
+      </s:complexType>
+      <s:complexType name="CustomFieldMultiValue">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CustomFieldInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Value" type="tns:ArrayOfOption" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfOption">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Option" nillable="true" type="tns:Option" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CustomFieldBasicValue">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CustomFieldInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfComplianceObjectInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ComplianceObjectInfo" nillable="true" type="tns:ComplianceObjectInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EventLogInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ComplianceObjectInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DataEntryType" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="LimitType" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TrackNonNumeric" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="POIInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ComplianceObjectInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="UnitInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ComplianceObjectInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="FacilityInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ComplianceObjectInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ContactFirstName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ContactLastName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SiteName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SiteAddress" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SiteCity" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SiteCountry" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SiteState" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SiteCounty" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SitePostalCode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MailAddress" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MailCity" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MailCountry" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MailState" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MailPostalCode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TelNo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="FaxNo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DunBradNo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SIC1" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SIC2" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="RCRA" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="OtherAddress" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RequirementInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ComplianceObjectInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RequirementType" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="PeriodFrequency" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="PeriodTime" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Title3" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="NumericRequirementInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RequirementInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="UOM" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Precision" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="SessionHeader" type="s1:SessionHeader" />
+      <s:element name="GetComplianceObject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tagName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetComplianceObjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetComplianceObjectResult" type="tns:ComplianceObjectInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSystems">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSystemsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSystemsResult" type="tns:ArrayOfSystemInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSystemInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SystemInfo" nillable="true" type="tns:SystemInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SystemInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s2:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="CheckTagsExist">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objectTags" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CheckTagsExistResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckTagsExistResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://enviance.com/Security">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:complexType name="SessionHeader">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SessionID" type="s2:guid" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetTreeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTree" />
+  </wsdl:message>
+  <wsdl:message name="GetTreeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTreeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTreeSessionHeader">
+    <wsdl:part name="SessionHeader" element="tns:SessionHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetComplianceObjectSoapIn">
+    <wsdl:part name="parameters" element="tns:GetComplianceObject" />
+  </wsdl:message>
+  <wsdl:message name="GetComplianceObjectSoapOut">
+    <wsdl:part name="parameters" element="tns:GetComplianceObjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetComplianceObjectSessionHeader">
+    <wsdl:part name="SessionHeader" element="tns:SessionHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetSystemsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSystems" />
+  </wsdl:message>
+  <wsdl:message name="GetSystemsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSystemsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSystemsSessionHeader">
+    <wsdl:part name="SessionHeader" element="tns:SessionHeader" />
+  </wsdl:message>
+  <wsdl:message name="CheckTagsExistSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckTagsExist" />
+  </wsdl:message>
+  <wsdl:message name="CheckTagsExistSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckTagsExistResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckTagsExistSessionHeader">
+    <wsdl:part name="SessionHeader" element="tns:SessionHeader" />
+  </wsdl:message>
+  <wsdl:portType name="TreeServiceSoap">
+    <wsdl:operation name="GetTree">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets all children of the specified object.</wsdl:documentation>
+      <wsdl:input message="tns:GetTreeSoapIn" />
+      <wsdl:output message="tns:GetTreeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetComplianceObject">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets information about a compliance object.</wsdl:documentation>
+      <wsdl:input message="tns:GetComplianceObjectSoapIn" />
+      <wsdl:output message="tns:GetComplianceObjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSystems">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets all accessable systems for the current session.</wsdl:documentation>
+      <wsdl:input message="tns:GetSystemsSoapIn" />
+      <wsdl:output message="tns:GetSystemsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckTagsExist">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the subset of tags from the input that do NOT exist as tags in the Requirements tree.</wsdl:documentation>
+      <wsdl:input message="tns:CheckTagsExistSoapIn" />
+      <wsdl:output message="tns:CheckTagsExistSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TreeServiceSoap" type="tns:TreeServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTree">
+      <soap:operation soapAction="http://enviance.com/2007/TreeService/GetTree" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetTreeSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetComplianceObject">
+      <soap:operation soapAction="http://enviance.com/2007/TreeService/GetComplianceObject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetComplianceObjectSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSystems">
+      <soap:operation soapAction="http://enviance.com/2007/TreeService/GetSystems" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetSystemsSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckTagsExist">
+      <soap:operation soapAction="http://enviance.com/2007/TreeService/CheckTagsExist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CheckTagsExistSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TreeServiceSoap12" type="tns:TreeServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTree">
+      <soap12:operation soapAction="http://enviance.com/2007/TreeService/GetTree" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetTreeSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetComplianceObject">
+      <soap12:operation soapAction="http://enviance.com/2007/TreeService/GetComplianceObject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetComplianceObjectSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSystems">
+      <soap12:operation soapAction="http://enviance.com/2007/TreeService/GetSystems" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetSystemsSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckTagsExist">
+      <soap12:operation soapAction="http://enviance.com/2007/TreeService/CheckTagsExist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CheckTagsExistSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TreeService">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Provides methods for manipulating compliance tree objects.</wsdl:documentation>
+    <wsdl:port name="TreeServiceSoap" binding="tns:TreeServiceSoap">
+      <soap:address location="http://webservices.enviance.com/2007/TreeService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TreeServiceSoap12" binding="tns:TreeServiceSoap12">
+      <soap12:address location="http://webservices.enviance.com/2007/TreeService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

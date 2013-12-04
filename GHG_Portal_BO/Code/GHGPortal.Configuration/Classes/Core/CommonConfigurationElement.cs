@@ -1,0 +1,45 @@
+﻿using System;
+using System.Configuration;
+
+namespace Hess.Corporate.GHGPortal.Configuration
+{
+    public class CommonConfigurationElements : ConfigurationElementCollectionBase<CommonConfigurationElement> { }
+
+    public class CommonConfigurationElement : ConfigurationElementBase
+    {
+        #region Configuration Properties
+
+        [ConfigurationProperty("_configurationName", IsRequired = true)]
+        public string ConfigurationName
+        {
+            get { return Convert.ToString(this["_configurationName"]); }
+        }
+
+        [ConfigurationProperty("systemType", DefaultValue = SystemType.GHGPortal, IsRequired = true)]
+        public SystemType SystemType
+        {
+            get
+            {
+                if (this["systemType"] == null) return SystemType.GHGPortal;
+                return (SystemType)this["systemType"];
+            }
+        }
+
+        [ConfigurationProperty("value", IsRequired = true)]
+        public string Value
+        {
+            get { return Convert.ToString(this["value"]); }
+        }
+
+        #endregion
+
+        #region Method Overrides
+
+        public override object GetKeyValue()
+        {
+            return Enum.GetName(typeof(SystemType), this.SystemType) + this.ConfigurationName;
+        }
+
+        #endregion
+    }
+}

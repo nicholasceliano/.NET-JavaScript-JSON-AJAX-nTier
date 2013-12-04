@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://stt2.ihess.com/PhysDealManager/WebServices/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://stt2.ihess.com/PhysDealManager/WebServices/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://stt2.ihess.com/PhysDealManager/WebServices/">
+      <s:element name="GetResolutionProcedures">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="contextKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetResolutionProceduresResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetResolutionProceduresResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProcessStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="processCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProcessStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProcessStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGoodsMovementDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="contextKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGoodsMovementDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGoodsMovementDetailsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGoodsMovementPostingStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sapBulkOrders" type="tns:ArrayOfSAPBulkOrder" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSAPBulkOrder">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SAPBulkOrder" nillable="true" type="tns:SAPBulkOrder" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SAPBulkOrder">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BulkOrderNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BulkOrderTypeCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SupplyProductCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GoodsMovementIsPosted" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetGoodsMovementPostingStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetGoodsMovementPostingStatusResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="sapBulkOrders" type="tns:ArrayOfSAPBulkOrder" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBulkOrderGoodsMovementPostingStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bulkOrderNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBulkOrderGoodsMovementPostingStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetBulkOrderGoodsMovementPostingStatusResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllBulkOrders">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="moveTransNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllBulkOrdersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteAllBulkOrdersResult" type="tns:ArrayOfBulkOrderDeleteStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBulkOrderDeleteStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BulkOrderDeleteStatus" nillable="true" type="tns:BulkOrderDeleteStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BulkOrderDeleteStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MoveTransNum" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SegmentId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Errors" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteBulkOrders">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="moveTransNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="segmentIds" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteBulkOrdersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteBulkOrdersResult" type="tns:ArrayOfBulkOrderDeleteStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetResolutionProceduresSoapIn">
+    <wsdl:part name="parameters" element="tns:GetResolutionProcedures" />
+  </wsdl:message>
+  <wsdl:message name="GetResolutionProceduresSoapOut">
+    <wsdl:part name="parameters" element="tns:GetResolutionProceduresResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProcessStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProcessStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetProcessStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProcessStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGoodsMovementDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGoodsMovementDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetGoodsMovementDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGoodsMovementDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGoodsMovementPostingStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGoodsMovementPostingStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetGoodsMovementPostingStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGoodsMovementPostingStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBulkOrderGoodsMovementPostingStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBulkOrderGoodsMovementPostingStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetBulkOrderGoodsMovementPostingStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBulkOrderGoodsMovementPostingStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllBulkOrdersSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteAllBulkOrders" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllBulkOrdersSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteAllBulkOrdersResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteBulkOrdersSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteBulkOrders" />
+  </wsdl:message>
+  <wsdl:message name="DeleteBulkOrdersSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteBulkOrdersResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CommonWebServiceSoap">
+    <wsdl:operation name="GetResolutionProcedures">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the full description and resolution procedures of the event log message</wsdl:documentation>
+      <wsdl:input message="tns:GetResolutionProceduresSoapIn" />
+      <wsdl:output message="tns:GetResolutionProceduresSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProcessStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the status of the process run by the windows service</wsdl:documentation>
+      <wsdl:input message="tns:GetProcessStatusSoapIn" />
+      <wsdl:output message="tns:GetProcessStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsMovementDetails">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of all goods movements posted for a specific bulk order</wsdl:documentation>
+      <wsdl:input message="tns:GetGoodsMovementDetailsSoapIn" />
+      <wsdl:output message="tns:GetGoodsMovementDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsMovementPostingStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the goods movements posting statuses for list of the bulk orders</wsdl:documentation>
+      <wsdl:input message="tns:GetGoodsMovementPostingStatusSoapIn" />
+      <wsdl:output message="tns:GetGoodsMovementPostingStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBulkOrderGoodsMovementPostingStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the goods movements posting status of the bulk order</wsdl:documentation>
+      <wsdl:input message="tns:GetBulkOrderGoodsMovementPostingStatusSoapIn" />
+      <wsdl:output message="tns:GetBulkOrderGoodsMovementPostingStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllBulkOrders">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Validates and deletes the all bulk orders for specified move</wsdl:documentation>
+      <wsdl:input message="tns:DeleteAllBulkOrdersSoapIn" />
+      <wsdl:output message="tns:DeleteAllBulkOrdersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBulkOrders">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Validates and deletes the bulk orders for specified move</wsdl:documentation>
+      <wsdl:input message="tns:DeleteBulkOrdersSoapIn" />
+      <wsdl:output message="tns:DeleteBulkOrdersSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CommonWebServiceSoap" type="tns:CommonWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetResolutionProcedures">
+      <soap:operation soapAction="http://stt2.ihess.com/PhysDealManager/WebServices/GetResolutionProcedures" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProcessStatus">
+      <soap:operation soapAction="http://stt2.ihess.com/PhysDealManager/WebServices/GetProcessStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsMovementDetails">
+      <soap:operation soapAction="http://stt2.ihess.com/PhysDealManager/WebServices/GetGoodsMovementDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsMovementPostingStatus">
+      <soap:operation soapAction="http://stt2.ihess.com/PhysDealManager/WebServices/GetGoodsMovementPostingStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBulkOrderGoodsMovementPostingStatus">
+      <soap:operation soapAction="http://stt2.ihess.com/PhysDealManager/WebServices/GetBulkOrderGoodsMovementPostingStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllBulkOrders">
+      <soap:operation soapAction="http://stt2.ihess.com/PhysDealManager/WebServices/DeleteAllBulkOrders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBulkOrders">
+      <soap:operation soapAction="http://stt2.ihess.com/PhysDealManager/WebServices/DeleteBulkOrders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CommonWebServiceSoap12" type="tns:CommonWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetResolutionProcedures">
+      <soap12:operation soapAction="http://stt2.ihess.com/PhysDealManager/WebServices/GetResolutionProcedures" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProcessStatus">
+      <soap12:operation soapAction="http://stt2.ihess.com/PhysDealManager/WebServices/GetProcessStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsMovementDetails">
+      <soap12:operation soapAction="http://stt2.ihess.com/PhysDealManager/WebServices/GetGoodsMovementDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsMovementPostingStatus">
+      <soap12:operation soapAction="http://stt2.ihess.com/PhysDealManager/WebServices/GetGoodsMovementPostingStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBulkOrderGoodsMovementPostingStatus">
+      <soap12:operation soapAction="http://stt2.ihess.com/PhysDealManager/WebServices/GetBulkOrderGoodsMovementPostingStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllBulkOrders">
+      <soap12:operation soapAction="http://stt2.ihess.com/PhysDealManager/WebServices/DeleteAllBulkOrders" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBulkOrders">
+      <soap12:operation soapAction="http://stt2.ihess.com/PhysDealManager/WebServices/DeleteBulkOrders" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CommonWebService">
+    <wsdl:port name="CommonWebServiceSoap" binding="tns:CommonWebServiceSoap">
+      <soap:address location="http://stt/pdm/webservices/commonwebservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CommonWebServiceSoap12" binding="tns:CommonWebServiceSoap12">
+      <soap12:address location="http://stt/pdm/webservices/commonwebservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

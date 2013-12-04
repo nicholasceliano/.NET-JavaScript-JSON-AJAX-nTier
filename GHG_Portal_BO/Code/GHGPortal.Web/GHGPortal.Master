@@ -1,0 +1,53 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="GHGPortal.Master.cs" Inherits="Hess.Corporate.GHGPortal.Web.UI.GHGPortalMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head runat="server">
+        <title>Greenhouse Gases Emissions - Verification Portal</title>
+        <script src="App_Themes/Hess/JavaScripts/jquery-1.8.3.min.js"></script>
+        <script src="App_Themes/Hess/JavaScripts/jquery-ui-1.9.2.custom.min.js"></script>
+        <script src="App_Themes/Hess/JavaScripts/jquery.tipsy.js"></script>
+        <script src="App_Themes/Hess/JavaScripts/json2.js"></script>
+        <script src="App_Themes/Hess/JavaScripts/MainMenu(superfish).js"></script>
+        <script src="App_Themes/Hess/JavaScripts/Page_Custom.js"></script>
+        <script src="App_Themes/Hess/JavaScripts/jquery.autocomplete.js"></script>
+        <link rel="stylesheet" type="text/css" href="App_Themes/Hess/Styles/Default.css">
+        <link rel="stylesheet" type="text/css" href="App_Themes/Hess/Styles/jquery.autocomplete.css">
+        <link rel="shortcut icon" href="App_Themes/Hess/Images/favicon.ico" />
+    </head>
+    <body>
+        <form id="GHGPortalForm" runat="server" class="page">
+            <div id="pageHeader" runat="server" class="pageHeader">
+                <div class="hessLogo"></div>
+                <div class="pageHeaderText">EH&S Emissions Validation Portal</div>
+            </div>
+            <div class="menuPanel">
+                <ul class="sf-menu">
+                    <li>Approvals
+                        <ul>
+                            <li class="subMenu"><a href="/Standard">Standard Approval</a></li>
+                            <li class="subMenu"><a href="/Vessel">Vessel Approval</a></li>
+                        </ul>
+                    </li>
+                    <li id="adminMenu" runat="server" visible="false">Admin
+                        <ul>
+                            <li><a href="/AssetManagement">Asset Management</a></li>
+                            <li><a href="/FacilityManagement">Facility Management</a></li>
+                            <li id="executeSSISMenu" runat="server" visible="false"><a href="/ExecuteSSIS">Execute SSIS</a></li>
+                        </ul>
+                    </li>
+                    <li>Help
+                        <ul>
+                            <li><a href="mailto:CorporateBusinessSystems@hess.com">E-mail Support</a></li>
+                            <li><a href="/Documents/Validation Portal User Training Manual.docx">User Manual</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <asp:Label ID="lblWelcomeMessage" runat="server" Text="Welcome Guest" CssClass="welcomeMessage" />
+            </div>
+            <div class="pageContent">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </div>
+        </form>
+    </body>
+</html>

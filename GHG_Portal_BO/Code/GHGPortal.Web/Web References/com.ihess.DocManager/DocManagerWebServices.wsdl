@@ -1,0 +1,817 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org//DocManagerWebServices" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://stt2.ihess.com/Contrack/DocManagerWebService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org//DocManagerWebServices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org//DocManagerWebServices">
+      <s:import namespace="http://stt2.ihess.com/Contrack/DocManagerWebService" />
+      <s:element name="GetFileByConfirmTrackingDetailItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TempestDealID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OurReference" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TheirReference" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Strategy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Counterparty" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Reason" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileByConfirmTrackingDetailItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFileByConfirmTrackingDetailItemResult" type="tns:ArrayOfDocAndTrackingDetailID" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDocAndTrackingDetailID">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DocAndTrackingDetailID" nillable="true" type="s1:DocAndTrackingDetailID" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetComplete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConfirmTrackingDetailID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Reason" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetCompleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetCompleteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddConfirmTrackingDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TempestDealID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OurReference" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TheirReference" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Strategy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Counterparty" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Reason" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddConfirmTrackingDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddConfirmTrackingDetailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmTrackingDetailGetCountByDocStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TempestDealID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OurReference" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TheirReference" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Strategy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Counterparty" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Reason" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmTrackingDetailGetCountByDocStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConfirmTrackingDetailGetCountByDocStatusResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FilterContracts">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="documentGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tempestDealIds" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FilterContractsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FilterContractsResult" type="tns:ArrayOfContractDetailItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfContractDetailItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ContractDetailItem" nillable="true" type="tns:ContractDetailItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ContractDetailItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="dateDifference" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="displayCode" type="tns:DisplayKey" />
+          <s:element minOccurs="1" maxOccurs="1" name="contractNum" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="strategy" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ourReference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="theirReference" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="contractDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="company" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="internalCompany" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="companyType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="contactEmailAddress" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="createDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="businessUnit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tradeType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="buySell" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="product" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="price" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="priceUnit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="volume" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="volumeUnit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="locationUdf" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="locationTrade" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="transmittedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="headerId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="issueStatus" type="tns:IssueStatuses" />
+          <s:element minOccurs="0" maxOccurs="1" name="issueUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="issueResponsible" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="issueStatusDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="issueNote" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="lastModifiedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastCpFollowupLetterSentDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="DisplayKey">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="Inbound" />
+          <s:enumeration value="Outbound" />
+          <s:enumeration value="Both" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="IssueStatuses">
+        <s:restriction base="s:string">
+          <s:enumeration value="Resolved" />
+          <s:enumeration value="Unresolved" />
+          <s:enumeration value="Empty" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetDocumentDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dealId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ourReference" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="theirReference" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strategy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="counterParty" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="docGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="docType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reason" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDocumentDetailsResult" type="tns:ArrayOfConfirmTrackingDetailItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfConfirmTrackingDetailItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConfirmTrackingDetailItem" nillable="true" type="tns:ConfirmTrackingDetailItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConfirmTrackingDetailItem">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ConfirmTrackingDetailItemBase">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="HeaderKey" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="FilePath" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TrackingHeader" type="tns:ConfirmTrackingHeaderItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="Uploads" type="tns:ArrayOfTrackingDetailUploadHistoryItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ConfirmTrackingDetailItemBase" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="HeaderId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DocType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Source" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reason" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedOn" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreatedBy" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConfirmFilename" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUploadAttempt" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Obsolete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgreementDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConfirmTrackingHeaderItem">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ConfirmTrackingHeaderItemBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IssueStatus" type="tns:IssueStatuses" />
+              <s:element minOccurs="0" maxOccurs="1" name="DealDate" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="LastActivityDate" type="s:dateTime" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ConfirmTrackingHeaderItemBase" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TempestDealId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OurReference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TheirReference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Strategy" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Counterparty" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DocGroup" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedOn" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreatedBy" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTrackingDetailUploadHistoryItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TrackingDetailUploadHistoryItem" nillable="true" type="tns:TrackingDetailUploadHistoryItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TrackingDetailUploadHistoryItem">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:TrackingDetailUploadHistoryItemBase">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="CreatedBy" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="HeaderId" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="AssignmentDate" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="DocType" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Reason" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TrackingDetailUploadHistoryItemBase" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TrackingDetailId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UploadAttemptedOn" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Successful" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Filename" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FileCreationTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="TempestDealId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OurReference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TheirReference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Strategy" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CounterParty" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Obsolete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgreementDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfDocAndTrackingDetailID" nillable="true" type="tns:ArrayOfDocAndTrackingDetailID" />
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="int" type="s:int" />
+      <s:element name="ArrayOfContractDetailItem" nillable="true" type="tns:ArrayOfContractDetailItem" />
+      <s:element name="ArrayOfConfirmTrackingDetailItem" nillable="true" type="tns:ArrayOfConfirmTrackingDetailItem" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://stt2.ihess.com/Contrack/DocManagerWebService">
+      <s:complexType name="DocAndTrackingDetailID">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="_TrackingDetailID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="_FilePath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_DocImage" type="s1:DocImage" />
+          <s:element minOccurs="0" maxOccurs="1" name="_ErrorMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DocImage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileBytes" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetFileByConfirmTrackingDetailItemSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFileByConfirmTrackingDetailItem" />
+  </wsdl:message>
+  <wsdl:message name="GetFileByConfirmTrackingDetailItemSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileByConfirmTrackingDetailItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetCompleteSoapIn">
+    <wsdl:part name="parameters" element="tns:SetComplete" />
+  </wsdl:message>
+  <wsdl:message name="SetCompleteSoapOut">
+    <wsdl:part name="parameters" element="tns:SetCompleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddConfirmTrackingDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:AddConfirmTrackingDetail" />
+  </wsdl:message>
+  <wsdl:message name="AddConfirmTrackingDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:AddConfirmTrackingDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmTrackingDetailGetCountByDocStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:ConfirmTrackingDetailGetCountByDocStatus" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmTrackingDetailGetCountByDocStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfirmTrackingDetailGetCountByDocStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="FilterContractsSoapIn">
+    <wsdl:part name="parameters" element="tns:FilterContracts" />
+  </wsdl:message>
+  <wsdl:message name="FilterContractsSoapOut">
+    <wsdl:part name="parameters" element="tns:FilterContractsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDocumentDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDocumentDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFileByConfirmTrackingDetailItemHttpGetIn">
+    <wsdl:part name="TempestDealID" type="s:string" />
+    <wsdl:part name="OurReference" type="s:string" />
+    <wsdl:part name="TheirReference" type="s:string" />
+    <wsdl:part name="Strategy" type="s:string" />
+    <wsdl:part name="Counterparty" type="s:string" />
+    <wsdl:part name="DocGroup" type="s:string" />
+    <wsdl:part name="DocType" type="s:string" />
+    <wsdl:part name="Status" type="s:string" />
+    <wsdl:part name="Reason" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFileByConfirmTrackingDetailItemHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfDocAndTrackingDetailID" />
+  </wsdl:message>
+  <wsdl:message name="SetCompleteHttpGetIn">
+    <wsdl:part name="ConfirmTrackingDetailID" type="s:string" />
+    <wsdl:part name="DocType" type="s:string" />
+    <wsdl:part name="Status" type="s:string" />
+    <wsdl:part name="Reason" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetCompleteHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="AddConfirmTrackingDetailHttpGetIn">
+    <wsdl:part name="TempestDealID" type="s:string" />
+    <wsdl:part name="OurReference" type="s:string" />
+    <wsdl:part name="TheirReference" type="s:string" />
+    <wsdl:part name="Strategy" type="s:string" />
+    <wsdl:part name="Counterparty" type="s:string" />
+    <wsdl:part name="DocGroup" type="s:string" />
+    <wsdl:part name="DocType" type="s:string" />
+    <wsdl:part name="Status" type="s:string" />
+    <wsdl:part name="Reason" type="s:string" />
+    <wsdl:part name="Notes" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddConfirmTrackingDetailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmTrackingDetailGetCountByDocStatusHttpGetIn">
+    <wsdl:part name="TempestDealID" type="s:string" />
+    <wsdl:part name="OurReference" type="s:string" />
+    <wsdl:part name="TheirReference" type="s:string" />
+    <wsdl:part name="Strategy" type="s:string" />
+    <wsdl:part name="Counterparty" type="s:string" />
+    <wsdl:part name="DocGroup" type="s:string" />
+    <wsdl:part name="DocType" type="s:string" />
+    <wsdl:part name="Status" type="s:string" />
+    <wsdl:part name="Reason" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmTrackingDetailGetCountByDocStatusHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="FilterContractsHttpGetIn">
+    <wsdl:part name="documentGroup" type="s:string" />
+    <wsdl:part name="tempestDealIds" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FilterContractsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfContractDetailItem" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentDetailsHttpGetIn">
+    <wsdl:part name="dealId" type="s:string" />
+    <wsdl:part name="ourReference" type="s:string" />
+    <wsdl:part name="theirReference" type="s:string" />
+    <wsdl:part name="strategy" type="s:string" />
+    <wsdl:part name="counterParty" type="s:string" />
+    <wsdl:part name="docGroup" type="s:string" />
+    <wsdl:part name="docType" type="s:string" />
+    <wsdl:part name="status" type="s:string" />
+    <wsdl:part name="reason" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentDetailsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConfirmTrackingDetailItem" />
+  </wsdl:message>
+  <wsdl:message name="GetFileByConfirmTrackingDetailItemHttpPostIn">
+    <wsdl:part name="TempestDealID" type="s:string" />
+    <wsdl:part name="OurReference" type="s:string" />
+    <wsdl:part name="TheirReference" type="s:string" />
+    <wsdl:part name="Strategy" type="s:string" />
+    <wsdl:part name="Counterparty" type="s:string" />
+    <wsdl:part name="DocGroup" type="s:string" />
+    <wsdl:part name="DocType" type="s:string" />
+    <wsdl:part name="Status" type="s:string" />
+    <wsdl:part name="Reason" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFileByConfirmTrackingDetailItemHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfDocAndTrackingDetailID" />
+  </wsdl:message>
+  <wsdl:message name="SetCompleteHttpPostIn">
+    <wsdl:part name="ConfirmTrackingDetailID" type="s:string" />
+    <wsdl:part name="DocType" type="s:string" />
+    <wsdl:part name="Status" type="s:string" />
+    <wsdl:part name="Reason" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetCompleteHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="AddConfirmTrackingDetailHttpPostIn">
+    <wsdl:part name="TempestDealID" type="s:string" />
+    <wsdl:part name="OurReference" type="s:string" />
+    <wsdl:part name="TheirReference" type="s:string" />
+    <wsdl:part name="Strategy" type="s:string" />
+    <wsdl:part name="Counterparty" type="s:string" />
+    <wsdl:part name="DocGroup" type="s:string" />
+    <wsdl:part name="DocType" type="s:string" />
+    <wsdl:part name="Status" type="s:string" />
+    <wsdl:part name="Reason" type="s:string" />
+    <wsdl:part name="Notes" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddConfirmTrackingDetailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmTrackingDetailGetCountByDocStatusHttpPostIn">
+    <wsdl:part name="TempestDealID" type="s:string" />
+    <wsdl:part name="OurReference" type="s:string" />
+    <wsdl:part name="TheirReference" type="s:string" />
+    <wsdl:part name="Strategy" type="s:string" />
+    <wsdl:part name="Counterparty" type="s:string" />
+    <wsdl:part name="DocGroup" type="s:string" />
+    <wsdl:part name="DocType" type="s:string" />
+    <wsdl:part name="Status" type="s:string" />
+    <wsdl:part name="Reason" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmTrackingDetailGetCountByDocStatusHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="FilterContractsHttpPostIn">
+    <wsdl:part name="documentGroup" type="s:string" />
+    <wsdl:part name="tempestDealIds" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FilterContractsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfContractDetailItem" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentDetailsHttpPostIn">
+    <wsdl:part name="dealId" type="s:string" />
+    <wsdl:part name="ourReference" type="s:string" />
+    <wsdl:part name="theirReference" type="s:string" />
+    <wsdl:part name="strategy" type="s:string" />
+    <wsdl:part name="counterParty" type="s:string" />
+    <wsdl:part name="docGroup" type="s:string" />
+    <wsdl:part name="docType" type="s:string" />
+    <wsdl:part name="status" type="s:string" />
+    <wsdl:part name="reason" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentDetailsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConfirmTrackingDetailItem" />
+  </wsdl:message>
+  <wsdl:portType name="DocManagerWebServicesSoap">
+    <wsdl:operation name="GetFileByConfirmTrackingDetailItem">
+      <wsdl:input message="tns:GetFileByConfirmTrackingDetailItemSoapIn" />
+      <wsdl:output message="tns:GetFileByConfirmTrackingDetailItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetComplete">
+      <wsdl:input message="tns:SetCompleteSoapIn" />
+      <wsdl:output message="tns:SetCompleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddConfirmTrackingDetail">
+      <wsdl:input message="tns:AddConfirmTrackingDetailSoapIn" />
+      <wsdl:output message="tns:AddConfirmTrackingDetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmTrackingDetailGetCountByDocStatus">
+      <wsdl:input message="tns:ConfirmTrackingDetailGetCountByDocStatusSoapIn" />
+      <wsdl:output message="tns:ConfirmTrackingDetailGetCountByDocStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FilterContracts">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Filters contracts</wsdl:documentation>
+      <wsdl:input message="tns:FilterContractsSoapIn" />
+      <wsdl:output message="tns:FilterContractsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentDetails">
+      <wsdl:input message="tns:GetDocumentDetailsSoapIn" />
+      <wsdl:output message="tns:GetDocumentDetailsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DocManagerWebServicesHttpGet">
+    <wsdl:operation name="GetFileByConfirmTrackingDetailItem">
+      <wsdl:input message="tns:GetFileByConfirmTrackingDetailItemHttpGetIn" />
+      <wsdl:output message="tns:GetFileByConfirmTrackingDetailItemHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetComplete">
+      <wsdl:input message="tns:SetCompleteHttpGetIn" />
+      <wsdl:output message="tns:SetCompleteHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddConfirmTrackingDetail">
+      <wsdl:input message="tns:AddConfirmTrackingDetailHttpGetIn" />
+      <wsdl:output message="tns:AddConfirmTrackingDetailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmTrackingDetailGetCountByDocStatus">
+      <wsdl:input message="tns:ConfirmTrackingDetailGetCountByDocStatusHttpGetIn" />
+      <wsdl:output message="tns:ConfirmTrackingDetailGetCountByDocStatusHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FilterContracts">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Filters contracts</wsdl:documentation>
+      <wsdl:input message="tns:FilterContractsHttpGetIn" />
+      <wsdl:output message="tns:FilterContractsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentDetails">
+      <wsdl:input message="tns:GetDocumentDetailsHttpGetIn" />
+      <wsdl:output message="tns:GetDocumentDetailsHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DocManagerWebServicesHttpPost">
+    <wsdl:operation name="GetFileByConfirmTrackingDetailItem">
+      <wsdl:input message="tns:GetFileByConfirmTrackingDetailItemHttpPostIn" />
+      <wsdl:output message="tns:GetFileByConfirmTrackingDetailItemHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetComplete">
+      <wsdl:input message="tns:SetCompleteHttpPostIn" />
+      <wsdl:output message="tns:SetCompleteHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddConfirmTrackingDetail">
+      <wsdl:input message="tns:AddConfirmTrackingDetailHttpPostIn" />
+      <wsdl:output message="tns:AddConfirmTrackingDetailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmTrackingDetailGetCountByDocStatus">
+      <wsdl:input message="tns:ConfirmTrackingDetailGetCountByDocStatusHttpPostIn" />
+      <wsdl:output message="tns:ConfirmTrackingDetailGetCountByDocStatusHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FilterContracts">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Filters contracts</wsdl:documentation>
+      <wsdl:input message="tns:FilterContractsHttpPostIn" />
+      <wsdl:output message="tns:FilterContractsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentDetails">
+      <wsdl:input message="tns:GetDocumentDetailsHttpPostIn" />
+      <wsdl:output message="tns:GetDocumentDetailsHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DocManagerWebServicesSoap" type="tns:DocManagerWebServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetFileByConfirmTrackingDetailItem">
+      <soap:operation soapAction="http://tempuri.org//DocManagerWebServices/GetFileByConfirmTrackingDetailItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetComplete">
+      <soap:operation soapAction="http://tempuri.org//DocManagerWebServices/SetComplete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddConfirmTrackingDetail">
+      <soap:operation soapAction="http://tempuri.org//DocManagerWebServices/AddConfirmTrackingDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmTrackingDetailGetCountByDocStatus">
+      <soap:operation soapAction="http://tempuri.org//DocManagerWebServices/ConfirmTrackingDetailGetCountByDocStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FilterContracts">
+      <soap:operation soapAction="http://tempuri.org//DocManagerWebServices/FilterContracts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentDetails">
+      <soap:operation soapAction="http://tempuri.org//DocManagerWebServices/GetDocumentDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DocManagerWebServicesSoap12" type="tns:DocManagerWebServicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetFileByConfirmTrackingDetailItem">
+      <soap12:operation soapAction="http://tempuri.org//DocManagerWebServices/GetFileByConfirmTrackingDetailItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetComplete">
+      <soap12:operation soapAction="http://tempuri.org//DocManagerWebServices/SetComplete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddConfirmTrackingDetail">
+      <soap12:operation soapAction="http://tempuri.org//DocManagerWebServices/AddConfirmTrackingDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmTrackingDetailGetCountByDocStatus">
+      <soap12:operation soapAction="http://tempuri.org//DocManagerWebServices/ConfirmTrackingDetailGetCountByDocStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FilterContracts">
+      <soap12:operation soapAction="http://tempuri.org//DocManagerWebServices/FilterContracts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentDetails">
+      <soap12:operation soapAction="http://tempuri.org//DocManagerWebServices/GetDocumentDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DocManagerWebServicesHttpGet" type="tns:DocManagerWebServicesHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetFileByConfirmTrackingDetailItem">
+      <http:operation location="/GetFileByConfirmTrackingDetailItem" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetComplete">
+      <http:operation location="/SetComplete" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddConfirmTrackingDetail">
+      <http:operation location="/AddConfirmTrackingDetail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmTrackingDetailGetCountByDocStatus">
+      <http:operation location="/ConfirmTrackingDetailGetCountByDocStatus" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FilterContracts">
+      <http:operation location="/FilterContracts" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentDetails">
+      <http:operation location="/GetDocumentDetails" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DocManagerWebServicesHttpPost" type="tns:DocManagerWebServicesHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetFileByConfirmTrackingDetailItem">
+      <http:operation location="/GetFileByConfirmTrackingDetailItem" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetComplete">
+      <http:operation location="/SetComplete" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddConfirmTrackingDetail">
+      <http:operation location="/AddConfirmTrackingDetail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmTrackingDetailGetCountByDocStatus">
+      <http:operation location="/ConfirmTrackingDetailGetCountByDocStatus" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FilterContracts">
+      <http:operation location="/FilterContracts" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentDetails">
+      <http:operation location="/GetDocumentDetails" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DocManagerWebServices">
+    <wsdl:port name="DocManagerWebServicesSoap" binding="tns:DocManagerWebServicesSoap">
+      <soap:address location="http://stg-stt2.ihess.com/bladestrack/DocManagerWebServices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DocManagerWebServicesSoap12" binding="tns:DocManagerWebServicesSoap12">
+      <soap12:address location="http://stg-stt2.ihess.com/bladestrack/DocManagerWebServices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DocManagerWebServicesHttpGet" binding="tns:DocManagerWebServicesHttpGet">
+      <http:address location="http://stg-stt2.ihess.com/bladestrack/DocManagerWebServices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DocManagerWebServicesHttpPost" binding="tns:DocManagerWebServicesHttpPost">
+      <http:address location="http://stg-stt2.ihess.com/bladestrack/DocManagerWebServices.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

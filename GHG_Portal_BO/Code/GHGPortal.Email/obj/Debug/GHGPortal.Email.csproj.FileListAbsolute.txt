@@ -1,0 +1,4 @@
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Email\bin\Debug\GHGPortal.Email.dll
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Email\bin\Debug\GHGPortal.Email.pdb
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Email\obj\Debug\GHGPortal.Email.dll
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Email\obj\Debug\GHGPortal.Email.pdb

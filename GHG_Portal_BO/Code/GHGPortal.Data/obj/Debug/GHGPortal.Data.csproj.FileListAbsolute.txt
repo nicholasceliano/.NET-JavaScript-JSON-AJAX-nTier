@@ -1,0 +1,15 @@
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Data\bin\appConfiguration.config
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Data\bin\appsettings.config
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Data\bin\dataConfiguration.config
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Data\bin\systemConfiguration.config
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Data\bin\GHGPortal.Data.dll
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Data\bin\GHGPortal.Data.pdb
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Data\bin\GHGPortal.Configuration.dll
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Data\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Data\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Data\bin\GHGPortal.Configuration.pdb
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Data\bin\Microsoft.Practices.EnterpriseLibrary.Common.xml
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Data\bin\Microsoft.Practices.EnterpriseLibrary.Data.xml
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Data\obj\Debug\GHGPortal.Data.csprojResolveAssemblyReference.cache
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Data\obj\Debug\GHGPortal.Data.dll
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Data\obj\Debug\GHGPortal.Data.pdb

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://enviance.com/2007/AuthService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s2="http://enviance.com/Security" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://enviance.com/2007/AuthService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Provides methods for authenticating to the Enviance system via certificate-based authentication.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://enviance.com/2007/AuthService">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:import namespace="http://enviance.com/Security" />
+      <s:element name="Authenticate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sessionType" type="tns:SessionType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="SessionType">
+        <s:restriction base="s:string">
+          <s:enumeration value="AspApplication" />
+          <s:enumeration value="WebServices" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="AuthenticateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AuthenticateResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateByCert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="encryptedUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="certUniqueID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sessionType" type="tns:SessionType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateByCertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AuthenticateByCertResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CloseSession">
+        <s:complexType />
+      </s:element>
+      <s:element name="CloseSessionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SessionHeader" type="s2:SessionHeader" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://enviance.com/Security">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:complexType name="SessionHeader">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SessionID" type="s1:guid" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AuthenticateSoapIn">
+    <wsdl:part name="parameters" element="tns:Authenticate" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthenticateResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateByCertSoapIn">
+    <wsdl:part name="parameters" element="tns:AuthenticateByCert" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateByCertSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthenticateByCertResponse" />
+  </wsdl:message>
+  <wsdl:message name="CloseSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:CloseSession" />
+  </wsdl:message>
+  <wsdl:message name="CloseSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:CloseSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CloseSessionSessionHeader">
+    <wsdl:part name="SessionHeader" element="tns:SessionHeader" />
+  </wsdl:message>
+  <wsdl:portType name="AuthServiceSoap">
+    <wsdl:operation name="Authenticate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Authenticate to the Enviance system.</wsdl:documentation>
+      <wsdl:input message="tns:AuthenticateSoapIn" />
+      <wsdl:output message="tns:AuthenticateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateByCert">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Authenticate to the Enviance system via cert-based authentication.</wsdl:documentation>
+      <wsdl:input message="tns:AuthenticateByCertSoapIn" />
+      <wsdl:output message="tns:AuthenticateByCertSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CloseSession">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Close a session with the Enviance system.</wsdl:documentation>
+      <wsdl:input message="tns:CloseSessionSoapIn" />
+      <wsdl:output message="tns:CloseSessionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AuthServiceSoap" type="tns:AuthServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Authenticate">
+      <soap:operation soapAction="http://enviance.com/2007/AuthService/Authenticate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateByCert">
+      <soap:operation soapAction="http://enviance.com/2007/AuthService/AuthenticateByCert" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseSession">
+      <soap:operation soapAction="http://enviance.com/2007/AuthService/CloseSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CloseSessionSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AuthServiceSoap12" type="tns:AuthServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Authenticate">
+      <soap12:operation soapAction="http://enviance.com/2007/AuthService/Authenticate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateByCert">
+      <soap12:operation soapAction="http://enviance.com/2007/AuthService/AuthenticateByCert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseSession">
+      <soap12:operation soapAction="http://enviance.com/2007/AuthService/CloseSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CloseSessionSessionHeader" part="SessionHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AuthService">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Provides methods for authenticating to the Enviance system via certificate-based authentication.</wsdl:documentation>
+    <wsdl:port name="AuthServiceSoap" binding="tns:AuthServiceSoap">
+      <soap:address location="http://webservices.enviance.com/2007/AuthService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AuthServiceSoap12" binding="tns:AuthServiceSoap12">
+      <soap12:address location="http://webservices.enviance.com/2007/AuthService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

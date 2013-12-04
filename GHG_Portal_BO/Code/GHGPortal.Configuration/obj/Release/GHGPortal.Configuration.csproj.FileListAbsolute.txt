@@ -1,0 +1,9 @@
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Configuration\bin\appConfiguration.config
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Configuration\bin\appsettings.config
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Configuration\bin\dataConfiguration.config
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Configuration\bin\systemConfiguration.config
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Configuration\bin\GHGPortal.Configuration.dll
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Configuration\bin\GHGPortal.Configuration.pdb
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Configuration\obj\Release\GHGPortal.Configuration.dll
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Configuration\obj\Release\GHGPortal.Configuration.pdb
+C:\Users\00619461\Desktop\GHG_Portal_BO\Code\GHGPortal.Configuration\obj\Release\GHGPortal.Configuration.csprojResolveAssemblyReference.cache

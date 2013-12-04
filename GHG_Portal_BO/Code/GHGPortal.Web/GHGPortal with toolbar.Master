@@ -1,0 +1,94 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="GHGPortal.Master.cs" 
+    Inherits="Hess.Corporate.GHGPortal.Web.UI.GHGPortal.GHGPortalMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Greenhouse Gases Emissions - Verification Portal</title>
+	<link rel="stylesheet" type="text/css" media="all" href="App_Themes/Hess/Styles/Default.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="App_Themes/Hess/Styles/Menu.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="App_Themes/Hess/Styles/GridView.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="App_Themes/Hess/Styles/CollapsePanel.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="App_Themes/Hess/Styles/FormCalendar.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="App_Themes/Hess/Styles/Controls.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="App_Themes/Hess/Styles/ToolTip.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="App_Themes/Hess/Styles/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="App_Themes/Hess/Styles/tipsy.css" />
+    <script type="text/javascript" src="App_Themes/Hess/JavaScripts/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="App_Themes/Hess/JavaScripts/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="App_Themes/Hess/JavaScripts/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="App_Themes/Hess/JavaScripts/GridView.js"></script>
+    <script type="text/javascript" src="App_Themes/Hess/JavaScripts/DropDownList.js"></script>
+    <script type="text/javascript" src="App_Themes/Hess/JavaScripts/ToolTip.js"></script>          
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="GHGPortalForm" runat="server">
+    <div class="page">
+        <div class="header">
+        <table cellspacing="0" cellpadding="0" width="100%">
+            <tr>
+                <td class="pageHeader">
+                        <table cellspacing="0" cellpadding="0" width="100%">
+                            <tr>
+                                <td style="width: 104px">
+                                    <img src="App_Themes/Hess/Images/logo.gif" alt="" style="margin: 5px" /><%--</td>
+                                    <img src="/CommonWeb/Images/logo.gif" alt="" style="margin: 5px" />--%></td>
+                                <td>
+                                    <table cellspacing="0" cellpadding="0">
+                                        <tr><td class="projectTitle"><asp:Label ID="lblProjectTitle" runat="server" Text="EH&S Emissions Validation Portal"></asp:Label></td></tr>
+                                        <%--<tr><td class="projectSubTitle"><asp:Label ID="lblProjectSubTitle" runat="server" Text="Verification & Approval Portal"></asp:Label></td></tr>--%>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                </td>
+            </tr>
+	    
+            <tr>
+                <td class="menuPanel">
+                    <table cellspacing="0" cellpadding="0" width="100%">
+                        <tr>
+                            <td style="text-align: left; width: 100%">
+                                <asp:menu ID="MainMenu" runat="server" DataSourceID="MainMenuDataSource" CssClass="staticMenu" Orientation="Horizontal">
+                                    <DataBindings><asp:MenuItemBinding DataMember="MenuItem" SelectableField="Selectable" TextField="Text" ValueField="Value" /></DataBindings>
+                                    <StaticMenuItemStyle CssClass="staticMenuItem" ItemSpacing="0px" />
+                                    <StaticHoverStyle CssClass="staticMenuItemHover" />
+                                    <DynamicMenuStyle CssClass="dynamicMenu" />
+                                    <DynamicMenuItemStyle CssClass="dynamicMenuItem" ItemSpacing="0px" />
+                                    <DynamicHoverStyle CssClass="dynamicMenuItemHover" />
+                                </asp:menu>
+                                <asp:XmlDataSource ID="MainMenuDataSource" 
+                                    DataFile="~/App_Data/MainMenu.xml" 
+                                    runat="server" XPath="/*/*">
+				                </asp:XmlDataSource>
+                            </td>
+                            <td style="display: none; text-align: right; padding-left: 8px; padding-right: 12px; white-space: nowrap">
+                                <asp:Label ID="lblWelcomeMessage" runat="server" Text="Welcome to GHG Portal"></asp:Label>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>   
+        </table>
+       </div>
+       
+       <div class="main">
+        <table cellspacing="0" cellpadding="0" width="100%">
+            <tr>
+                <td class="pageContent">
+	            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+                </td>
+            </tr>
+        </table>
+        </div>
+
+    </div>
+    <div class="footer">
+        
+    </div>
+    </form>
+</body>
+</html>
